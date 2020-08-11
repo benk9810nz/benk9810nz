@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Helpdesk Hours</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<style>
+		html, body {
+			background-color: #EDF7F6;
+		}
+		li {
+			list-style: none;
+		}
+		.tHead {
+			font-weight: bold;
+		}
+		td {
+			width: 25%;
+		}
+	</style>
+</head>
+<body  class="container">
+	<h2 class="text-center">Select your Student ID to See your current Hours for Helpdesk (updated Fridays)</h2>
+	<hr>
+	<br>
+	<h4 class="text-center">Please Select Your Student ID from the dropdown to see your Hours</h4>
+	<div id="app">
+	<select v-model="selected">
+        <option  value="0" disabled selected="selected">
+        Select your Student ID</option>
+        <option v-for="p in people" v-bind:value="p">
+        {{p.studentId}}</option>
+	</select>
+	<br> <br>
+	<div class="table-responsive">
+	<table class="table table-bordered table-hover table-striped table-light">
+		<tr>
+			<td class="tHead">First Name:</td>
+			<td>{{selected.fName}}</td>
+		</tr>
+		<tr>
+			<td class="tHead">Last Name:</td>
+			<td>{{selected.lName}}</td>
+		</tr>		
+		<tr>
+			<td class="tHead">Helpdesk Group:</td>
+			<td>{{selected.location}}</td>
+		</tr>
+		<tr>
+			<td class="tHead">Hours Completed so Far:</td>
+			<td>{{selected.hours}}</td>
+		</tr>
+		<tr class="bg-dark text-white">
+			<td class="tHead">Hours Left to Complete:</td>
+			<td>{{30 - selected.hours}}</td>
+		</tr>
+	</table>
+</div>
+	</div>
+	<p class="text-center text-danger font-weight-bold">Remember: This information is <u>only updated on Fridays</u>. It may not be up to date at this time. Both Helpdesk Leaders keep a detailed log - this is only
+	provided to give you a rough idea</p>
+	<hr>
+	<div class="footer text-center">
+	<p>If you have any questions/concerns please see the appropiate Helpdesk Leader:</p>
+	<ul>
+		<li>Library - <a href="mailto:2014006529@student.sit.ac.nz">Ben (Click to Email)</a></li>
+		<li>Cafe - <a href="mailto:2018001777@student.sit.ac.nz">Holly (Click to Email)</a></li>
+	</ul>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.js"></script>
+	<script src="js/people.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
